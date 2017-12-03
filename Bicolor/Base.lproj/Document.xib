@@ -23,7 +23,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="BicolorWindow" animationBehavior="default" id="xOd-HO-29H" userLabel="Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -54,7 +54,7 @@
                             <outlet property="delegate" destination="-2" id="xSI-9Z-GGu"/>
                         </connections>
                     </splitView>
-                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="dIk-sr-wdr">
+                    <colorWell toolTip="Color Picker" translatesAutoresizingMaskIntoConstraints="NO" id="dIk-sr-wdr">
                         <rect key="frame" x="20" y="20" width="44" height="23"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="23" id="l0Q-aT-pjz"/>
@@ -65,7 +65,7 @@
                             <action selector="setLeftColorWithSender:" target="-1" id="Mqr-oc-muE"/>
                         </connections>
                     </colorWell>
-                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="mQT-eb-DAz">
+                    <colorWell toolTip="Color Picker" translatesAutoresizingMaskIntoConstraints="NO" id="mQT-eb-DAz">
                         <rect key="frame" x="336" y="20" width="44" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="d44-Va-5ps"/>
@@ -75,7 +75,7 @@
                             <action selector="setRightColorWithSender:" target="-1" id="Bse-lh-52k"/>
                         </connections>
                     </colorWell>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yy0-SD-PDg">
+                    <button toolTip="Contrast Ratio" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yy0-SD-PDg">
                         <rect key="frame" x="179" y="23" width="43" height="17"/>
                         <buttonCell key="cell" type="inline" title="Inline" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="nBv-EN-F0V">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -102,8 +102,7 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="2CB07F8C-A1CA-4903-A623-DB3980E02E45" displayMode="iconOnly" sizeMode="small" id="SJL-QL-Seu">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="A2C0703D-4FD4-43B0-8DA7-42FDDA15A592" label="New" paletteLabel="New" image="NSAddTemplate" id="8O5-hX-jEe">
-                        <nil key="toolTip"/>
+                    <toolbarItem implicitItemIdentifier="A2C0703D-4FD4-43B0-8DA7-42FDDA15A592" label="New" paletteLabel="New" toolTip="New Scheme" image="NSAddTemplate" id="8O5-hX-jEe">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <button key="view" id="nXk-9g-PuQ">
@@ -118,8 +117,22 @@
                             <action selector="newDocument:" target="-1" id="1O1-BB-8V0"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="92825385-F8B1-4C72-AD87-4C45FAA3C267" label="Random" paletteLabel="Random" image="NSFlowViewTemplate" id="5RL-aH-Y4e">
-                        <nil key="toolTip"/>
+                    <toolbarItem implicitItemIdentifier="0E01CF22-6914-46F8-B8DD-FEF51B5B16E8" label="Split" paletteLabel="Split" toolTip="Initial Split" image="NSColumnViewTemplate" id="jlp-1d-NcB">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
+                        <button key="view" id="PIt-pS-Uou">
+                            <rect key="frame" x="5" y="14" width="22" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSColumnViewTemplate" imagePosition="only" alignment="center" inset="2" id="3Wb-Qm-gB8">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="resetSplitViewWithSender:" target="-1" id="abL-pL-UPx"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="92825385-F8B1-4C72-AD87-4C45FAA3C267" label="Random" paletteLabel="Random" toolTip="Random Colors" image="NSFlowViewTemplate" id="5RL-aH-Y4e">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <button key="view" id="PrA-Mk-Yzl">
@@ -134,14 +147,13 @@
                             <action selector="randomColorsWithSender:" target="-1" id="KPq-BY-Ke7"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="0B1B944A-3E9E-4E6E-B5ED-BD9F60AB34EA" label="Switch" paletteLabel="Switch" image="NSColumnViewTemplate" id="fyd-z8-UHP">
-                        <nil key="toolTip"/>
+                    <toolbarItem implicitItemIdentifier="0B1B944A-3E9E-4E6E-B5ED-BD9F60AB34EA" label="Switch" paletteLabel="Switch" toolTip="Switch Colors" image="NSPathTemplate" id="fyd-z8-UHP">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <button key="view" id="weA-u0-MtG">
                             <rect key="frame" x="11" y="14" width="22" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSColumnViewTemplate" imagePosition="only" alignment="center" inset="2" id="z4c-t0-wWx">
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSPathTemplate" imagePosition="only" alignment="center" inset="2" id="z4c-t0-wWx">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -150,14 +162,13 @@
                             <action selector="switchColorsWithSender:" target="-1" id="e0M-2u-Fv1"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="4E998913-3168-4072-B87C-20120199B785" label="Text" paletteLabel="Text" image="NSIconViewTemplate" id="16f-iC-MaQ">
-                        <nil key="toolTip"/>
+                    <toolbarItem implicitItemIdentifier="4E998913-3168-4072-B87C-20120199B785" label="Text" paletteLabel="Text" toolTip="Text Panel" image="NSListViewTemplate" id="16f-iC-MaQ">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <button key="view" id="mfm-ZE-ZYC">
                             <rect key="frame" x="4" y="14" width="22" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSIconViewTemplate" imagePosition="only" alignment="center" inset="2" id="uuu-GJ-QYd">
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSListViewTemplate" imagePosition="only" alignment="center" inset="2" id="uuu-GJ-QYd">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -171,7 +182,9 @@
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="G0i-YF-Ta5"/>
+                    <toolbarItem reference="8O5-hX-jEe"/>
                     <toolbarItem reference="5RL-aH-Y4e"/>
+                    <toolbarItem reference="jlp-1d-NcB"/>
                     <toolbarItem reference="fyd-z8-UHP"/>
                     <toolbarItem reference="16f-iC-MaQ"/>
                 </defaultToolbarItems>
@@ -184,7 +197,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="75" y="100" width="160" height="240"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <value key="minSize" type="size" width="160" height="240"/>
             <value key="maxSize" type="size" width="320" height="240"/>
             <view key="contentView" id="ZEZ-yn-4PE">
@@ -211,13 +224,14 @@
                     <constraint firstAttribute="bottom" secondItem="yRR-92-cth" secondAttribute="bottom" id="vO1-Xu-MLL"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="529" y="24"/>
+            <point key="canvasLocation" x="520" y="72"/>
         </window>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSColumnViewTemplate" width="16" height="10"/>
         <image name="NSFlowViewTemplate" width="18" height="10"/>
-        <image name="NSIconViewTemplate" width="10" height="10"/>
+        <image name="NSListViewTemplate" width="14" height="10"/>
+        <image name="NSPathTemplate" width="16" height="10"/>
     </resources>
 </document>

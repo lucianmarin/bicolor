@@ -47,9 +47,9 @@ class Document: NSDocument, NSSplitViewDelegate {
         return 0.2126 * R + 0.7152 * G + 0.0722 * B
     }
     
-    func getContrastRatio(leftColor: NSColor, rightColor: NSColor) -> CGFloat {
-        let leftLum = getLuminance(color: leftColor);
-        let rightLum = getLuminance(color: rightColor);
+    func getContrastRatio() -> CGFloat {
+        let leftLum = getLuminance(color: leftColorWell.color);
+        let rightLum = getLuminance(color: rightColorWell.color);
         return round((max(leftLum, rightLum) + 0.05)/(min(leftLum, rightLum) + 0.05)*10)/10;
     }
     
@@ -58,9 +58,8 @@ class Document: NSDocument, NSSplitViewDelegate {
         textField.backgroundColor = rightColorWell.color
         textField.textColor = leftColorWell.color
         
-        let contrast = getContrastRatio(leftColor: leftColorWell.color, rightColor: rightColorWell.color)
-        inline.title = contrast.description
-        mainWindow.title = contrast.description
+        inline.title = getContrastRatio().description
+        mainWindow.title = getContrastRatio().description
     }
     
     @IBAction func setRightColor(sender: AnyObject) {
@@ -68,9 +67,8 @@ class Document: NSDocument, NSSplitViewDelegate {
         textField.backgroundColor = rightColorWell.color
         textField.textColor = leftColorWell.color
         
-        let contrast = getContrastRatio(leftColor: leftColorWell.color, rightColor: rightColorWell.color)
-        inline.title = contrast.description
-        mainWindow.title = contrast.description
+        inline.title = getContrastRatio().description
+        mainWindow.title = getContrastRatio().description
     }
     
     @IBAction func switchColors(sender: AnyObject) {
@@ -97,7 +95,7 @@ class Document: NSDocument, NSSplitViewDelegate {
     }
     
     @IBAction func resetSplitView(sender: AnyObject) {
-        let cursor = mainWindow.frame.width/2 - 0.5
+        let cursor = (mainWindow.frame.width - 1)/2
         splitView.setPosition(cursor, ofDividerAt: 0)
     }
     
@@ -131,9 +129,8 @@ class Document: NSDocument, NSSplitViewDelegate {
         textField.backgroundColor = rightColorWell.color
         textField.textColor = leftColorWell.color
         
-        let contrast = getContrastRatio(leftColor: leftColorWell.color, rightColor: rightColorWell.color)
-        inline.title = contrast.description
-        self.displayName = contrast.description
+        inline.title = getContrastRatio().description
+        self.displayName = getContrastRatio().description
     }
 
     override init() {
