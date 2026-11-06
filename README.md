@@ -1,5 +1,7 @@
 # Bicolor
 
+![screenshot](screenshot.jpg)
+
 Color contrast calculator for macOS built with Swift and AppKit (`NSDocument`).
 
 Pick a foreground and a background color and Bicolor computes their **WCAG 2.0 relative luminance contrast ratio** in real time, alongside a live text preview and resizable split-view color canvas.
